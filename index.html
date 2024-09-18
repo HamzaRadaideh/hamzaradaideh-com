@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta property="og:title" content="Hamza Radaideh - Portfolio">
+    <meta property="og:description"
+        content="Portfolio of Hamza Radaideh, showcasing web development, mobile app development, and AI projects.">
+    <meta property="og:image" content="path_to_image.jpg">
+    <meta property="og:url" content="https://your-portfolio-link.com">
+
+    <title>Hamza Radaideh - Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" as="style">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bs-primary: #ff5733;
+            /* Custom primary color */
+            --bs-primary-hover: #d14c28;
+            --bs-body-bg: #f8f9fa;
+            --bs-body-color: #333;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bs-body-bg);
+            margin: 0;
+            color: var(--bs-body-color);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* Particles Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+
+        /* Navbar Styling */
+        nav.navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .navbar-nav .nav-link {
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .navbar-nav .nav-link:hover {
+            color: var(--bs-primary-hover);
+        }
+
+        /* Landing Page Styling */
+        header {
+            background-color: rgba(44, 62, 80, 0.6);
+            color: white;
+            text-align: center;
+            transition: background-color 0.5s ease;
+            min-height: 700px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .landing-page {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .landing-page img {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 5px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .landing-page img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .landing-page h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .landing-page p {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #adb5bd;
+        }
+
+        .btn-primary {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--bs-primary);
+        }
+
+        .progress-bar {
+            animation: loadProgressBar 1s ease-in-out;
+        }
+
+        .bottom-footer {
+            margin-top: 100px;
+        }
+
+        @keyframes loadProgressBar {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            background-color: #2c3e50;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: white;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--bs-primary-hover);
+        }
+
+        /* Back to Top Button */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: var(--bs-primary);
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #backToTopBtn:hover {
+            background-color: var(--bs-primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .dark-mode {
+            background-color: #333;
+            color: #f8f9fa;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .dark-mode footer {
+            background-color: #222;
+        }
+
+        .dark-mode .progress-bar {
+            background-color: #555;
+        }
+
+        .dark-mode header {
+            background-color: rgba(27, 27, 27, 0.7);
+            /* 70% opaque */
+        }
+
+        /* Chart container */
+        /* Chart container */
+        #chart {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff;
+        }
+
+        .dark-mode #chart {
+            margin-top: 5px;
+        }
+
+        /* Ensure the canvas scales well */
+        #skillsChart,
+        #techChart {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 500px;
+            max-height: 500px;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            #chart {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: auto;
+                /* Adjust height for vertical layout */
+            }
+
+            #skillsChart,
+            #techChart {
+                max-width: 90%;
+                max-height: 90%;
+                margin-bottom: 20px;
+                /* Add margin between charts */
+            }
+        }
+
+
+        /* Progress Bar Styling */
+        .progress-bar-animated {
+            background-color: var(--bs-primary);
+            transition: width 1.5s ease-in-out;
+        }
+
+        .dark-mode .progress-bar-animated {
+            background-color: #3498db;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#landing">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Landing Page -->
+    <header id="landing">
+        <div class="row align-items-center text-center">
+            <div class="col-lg-4 mb-3 mb-lg-0">
+                <!-- Profile Picture -->
+                <img src="pfp.png" alt="Hamza Radaideh" class="img-fluid rounded-circle"
+                    style="width: 320px; height: 320px;">
+            </div>
+
+            <div class="col-lg-4 mb-3 mb-lg-0">
+                <!-- Name and Typed Text -->
+                <h1>Hamza Radaideh</h1>
+                <p id="typed-output" class="typed-output"></p>
+                </p>
+            </div>
+
+            <div class="col-lg-4">
+                <!-- Download Resume and Theme Toggle -->
+                <a href="your_resume.pdf" class="btn btn-primary mt-3" download>Download Resume</a>
+                <br>
+                <button id="themeToggle" class="btn btn-dark mt-2">Switch to Light Mode</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Me Section -->
+    <section id="about" class="about container fade-in">
+        <section id="about" class="about container fade-in">
+            <h2>About Me</h2>
+            <div class="list-group">
+                <p class="list-group-item">Hello! I'm Hamza Radaideh, a passionate Software Developer, Full Stack
+                    Developer, and
+                    AI Engineer.
+                    I hold a Bachelor's degree in Computer Science from Jordan University of Science and Technology
+                    (JUST), and
+                    I have extensive experience
+                    in various facets of software development, from backend to frontend technologies. With a deep
+                    understanding
+                    of AI, I enjoy
+                    building scalable, robust solutions. I specialize in full-stack web and mobile app development using
+                    technologies like
+                    ASP.NET Core, SQL Server, Flutter, and React.js. Let's build something amazing together!</p>
+            </div>
+        </section>
+
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills container fade-in">
+        <h2>Skills</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list-group">
+                    <li class="list-group-item">Python, HTML5, CSS, JavaScript</li>
+                    <li class="list-group-item">Java, C++</li>
+                    <li class="list-group-item">Object-Oriented Programming (OOP)</li>
+                    <li class="list-group-item">Flutter, React.js</li>
+                    <li class="list-group-item">Data Science & visualization</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul class="list-group">
+                    <li class="list-group-item">Data Structures & Algorithms</li>
+                    <li class="list-group-item">Debugging Code, Testing</li>
+                    <li class="list-group-item">Database Management (SQL Server, MySQL, MongoDB)</li>
+                    <li class="list-group-item">Microsoft Visual Studio Code, GitHub, Git</li>
+                    <li class="list-group-item">Communication, Research Skills</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Skills Progress Bars -->
+        <h2 class="mt-4">Proficiency</h3>
+
+            <!-- Skills Progress Bars -->
+            <h3 class="mt-4">Proficiency</h3>
+            <div class="progress mt-2">
+                <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0"
+                    aria-valuemax="100">Full Stack Development</div>
+            </div>
+            <div class="progress mt-2">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 85%;" aria-valuenow="85"
+                    aria-valuemin="0" aria-valuemax="100">Mobile App Development</div>
+            </div>
+            <div class="progress mt-2">
+                <div class="progress-bar bg-info" role="progressbar" style="width: 75%;" aria-valuenow="75"
+                    aria-valuemin="0" aria-valuemax="100">AI & Machine Learning</div>
+            </div>
+
+            <!-- Skills Radar Chart and Donut Chart -->
+            <div id="chart">
+                <canvas id="skillsChart"></canvas>
+                <canvas id="techChart"></canvas>
+            </div>
+
+            <!-- Animated Progress Bar for Projects
+            <h3 class="mt-4">Project Completion</h3>
+            <div class="progress mt-2">
+                <div id="projectProgress" class="progress-bar progress-bar-striped progress-bar-animated"
+                    role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                    80% Projects Completed
+                </div>
+            </div> -->
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects container fade-in">
+
+        <h2>Projects
+            <div class="counter">
+                <h3><span class="count">5</span> Projects Completed</h3> <!-- Update the count as needed -->
+            </div>
+        </h2>
+        <div class="btn-group" role="group" aria-label="Project Filter">
+            <button type="button" class="btn btn-outline-primary" onclick="filterProjects('web')">Web
+                Development</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="filterProjects('mobile')">Mobile
+                Development</button>
+            <button type="button" class="btn btn-outline-info" onclick="filterProjects('ai')">AI/ML</button>
+            <button type="button" class="btn btn-outline-info" onclick="filterProjects('all')">All</button>
+        </div>
+        <div id="projects-container" class="row mt-4">
+
+            <!-- Project 1 (Web) -->
+            <div class="col-md-4 project-card web">
+                <div class="card mb-3">
+                    <img src="path_to_project1_image.jpg" class="card-img-top" alt="Project 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Personal Finance Manager</h5>
+                        <p class="card-text">A web application to manage accounts, transactions, and budgets using
+                            ASP.NET
+                            Core MVC.</p>
+                        <!-- Button to trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#project1Modal">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 (Mobile) -->
+            <div class="col-md-4 project-card mobile">
+                <div class="card mb-3">
+                    <img src="path_to_project2_image.jpg" class="card-img-top" alt="Project 2">
+                    <div class="card-body">
+                        <h5 class="card-title">E-Learning Platform</h5>
+                        <p class="card-text">A platform for instructors to create courses and quizzes, and for students
+                            to
+                            enroll and take quizzes.</p>
+                        <!-- Button to trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#project2Modal">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 (Web) -->
+            <div class="col-md-4 project-card web">
+                <div class="card mb-3">
+                    <img src="path_to_project3_image.jpg" class="card-img-top" alt="Project 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Blog Website</h5>
+                        <p class="card-text">A blogging system with user roles, chat functionalities, and notifications
+                            built with ASP.NET Core MVC.</p>
+                        <!-- Button to trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#project3Modal">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 (AI) -->
+            <div class="col-md-4 project-card ai">
+                <div class="card mb-3">
+                    <img src="path_to_project4_image.jpg" class="card-img-top" alt="Project 4">
+                    <div class="card-body">
+                        <h5 class="card-title">AI Chatbot</h5>
+                        <p class="card-text">An AI-powered chatbot built with Python and TensorFlow, providing
+                            personalized
+                            assistance to users.</p>
+                        <!-- Button to trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#project4Modal">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 (Mobile) -->
+            <div class="col-md-4 project-card mobile">
+                <div class="card mb-3">
+                    <img src="path_to_project5_image.jpg" class="card-img-top" alt="Project 5">
+                    <div class="card-body">
+                        <h5 class="card-title">Mobile Fitness App</h5>
+                        <p class="card-text">A mobile app built using Flutter for tracking fitness goals, workouts, and
+                            progress.</p>
+                        <!-- Button to trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#project5Modal">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Modals for Projects -->
+    <!-- Project 1 Modal -->
+    <div class="modal fade" id="project1Modal" tabindex="-1" aria-labelledby="project1ModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="project1ModalLabel">Project 1: Personal Finance Manager</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Details about the Personal Finance Manager, features, and technologies used.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="https://github.com/your-username/project1-repo" target="_blank"
+                        class="btn btn-primary">View on
+                        GitHub</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 2 Modal -->
+    <div class="modal fade" id="project2Modal" tabindex="-1" aria-labelledby="project2ModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="project2ModalLabel">Project 2: E-Learning Platform</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Details about the E-Learning Platform, features, and technologies used.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="https://github.com/your-username/project2-repo" target="_blank"
+                        class="btn btn-primary">View on
+                        GitHub</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 3 Modal -->
+    <div class="modal fade" id="project3Modal" tabindex="-1" aria-labelledby="project3ModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="project3ModalLabel">Project 3: Blog Website</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Details about the Blog Website, features, and technologies used.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="https://github.com/your-username/project3-repo" target="_blank"
+                        class="btn btn-primary">View on
+                        GitHub</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 4 Modal -->
+    <div class="modal fade" id="project4Modal" tabindex="-1" aria-labelledby="project4ModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="project4ModalLabel">Project 4: AI Chatbot</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Details about the AI Chatbot, features, and technologies used.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="https://github.com/your-username/project4-repo" target="_blank"
+                        class="btn btn-primary">View on
+                        GitHub</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 5 Modal -->
+    <div class="modal fade" id="project5Modal" tabindex="-1" aria-labelledby="project5ModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="project5ModalLabel">Project 5: Mobile Fitness App</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Details about the Mobile Fitness App, features, and technologies used.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="https://github.com/your-username/project5-repo" target="_blank"
+                        class="btn btn-primary">View on
+                        GitHub</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section id="certifications" class="certifications container fade-in">
+        <h2>Certifications</h2>
+        <ul class="list-group">
+            <li class="list-group-item">Complete Flutter App Development 2024 (Tuned Application Company)</li>
+            <li class="list-group-item">Complete The Java Course 2024 (Tuned Application Company)</li>
+            <li class="list-group-item">React Workshop 2023 (al-Balqa' Applied University IEEE Student Branch)</li>
+            <li class="list-group-item">IEEEXtreme 17.0 Programming Competition (Participated)</li>
+            <li class="list-group-item">Data Analysis Training 2024 (Machine Learning and Neural Networks, SHAI Company)
+            </li>
+        </ul>
+    </section>
+
+    <section id="languages" class="languages container fade-in">
+        <h2>Languages</h2>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Arabic:</strong> Native</li>
+            <li class="list-group-item"><strong>English:</strong> Good speaking, Advanced writing and reading</li>
+        </ul>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact container fade-in">
+        <h2>Contact Information</h2>
+        <ul class="list-group">
+            <li class="list-group-item">Email: <a href="mailto:hjradaideh10@gmail.com">hjradaideh10@gmail.com</a></li>
+            <li class="list-group-item">Phone: +962 797823180</li>
+            <li class="list-group-item">GitHub: <a href="https://github.com/HamzaRadaideh"
+                    target="_blank">github.com/HamzaRadaideh</a></li>
+            <li class="list-group-item">LinkedIn: <a href="https://www.linkedin.com/in/hamza-radaideh"
+                    target="_blank">linkedin.com/in/hamza-radaideh</a></li>
+        </ul>
+
+        <!-- Contact Form -->
+        <h3 class="mt-4">Contact Me</h3>
+        <form id="contactForm" action="https://formspree.io/your-email" method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="3" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bottom-footer">
+        <p>&copy; 2024 Hamza Radaideh. All rights reserved.</p>
+        <div>
+            <a href="https://linkedin.com/in/hamza-radaideh" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/HamzaRadaideh" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button onclick="topFunction()" id="backToTopBtn" class="btn btn-secondary">Top</button>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Typed.js for Typing Effect -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        var typed = new Typed('#typed-output', {
+            strings: ['Full Stack Developer', 'AI Engineer', 'Mobile App Developer'],
+            typeSpeed: 80,
+            backSpeed: 80,
+            fadeOut: true,
+            smartBackspace: true,
+            shuffle: true,
+            showCursor: false,
+            loop: true
+        });
+    </script>
+
+    <!-- jQuery for animations and other functionalities -->
+    <script>
+        $(document).ready(function () {
+            // Fade in sections on scroll
+            $(window).scroll(function () {
+                $('.fade-in').each(function () {
+                    var elementPos = $(this).offset().top;
+                    var topOfWindow = $(window).scrollTop();
+                    if (elementPos < topOfWindow + $(window).height() - 100) {
+                        $(this).animate({ 'opacity': '1' }, 1000);
+                    }
+                });
+            });
+
+            // Theme Toggle
+            $('#themeToggle').click(function () {
+                $('body').toggleClass('dark-mode');
+                if ($('body').hasClass('dark-mode')) {
+                    $('#themeToggle').text('Switch to Light Mode');
+                } else {
+                    $('#themeToggle').text('Switch to Dark Mode');
+                }
+            });
+        });
+
+        // Back to Top Button functionality
+        window.onscroll = function () { scrollFunction() };
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("backToTopBtn").style.display = "block";
+            } else {
+                document.getElementById("backToTopBtn").style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        // Chart.js for skills radar chart
+        const ctx = document.getElementById('skillsChart').getContext('2d');
+        const skillsChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Full Stack Dev', 'Mobile Dev', 'AI/ML', 'Data Analysis', 'Problem Solving'],
+                datasets: [{
+                    label: 'Skill Proficiency',
+                    data: [90, 85, 75, 80, 95],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        ticks: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Donut Chart for technology breakdown
+        const techCtx = document.getElementById('techChart').getContext('2d');
+        const techChart = new Chart(techCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Web Development', 'Mobile Development', 'AI/ML'],
+                datasets: [{
+                    label: 'Technology Breakdown',
+                    data: [60, 25, 15],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(75, 192, 192, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    }
+                }
+            }
+        });
+        function filterProjects(category) {
+            const projects = document.querySelectorAll('.project-card');
+
+            // Loop through each project and check its category
+            projects.forEach(project => {
+                if (category === 'all') {
+                    project.style.display = 'block'; // Show all projects if 'all' is selected
+                } else {
+                    if (project.classList.contains(category)) {
+                        project.style.display = 'block'; // Show only the selected category
+                    } else {
+                        project.style.display = 'none'; // Hide the others
+                    }
+                }
+            });
+        }
+
+
+    </script>
+
+    <!-- Particles.js Background Initialization -->
+    <script>
+        particlesJS.load('particles-js', 'particles.json', function () {
+            console.log('Particles.js loaded!');
+        });
+    </script>
+</body>
+
+</html>
