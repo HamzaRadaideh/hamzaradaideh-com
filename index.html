@@ -30,671 +30,17 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <style>
-        :root {
-            --primary-orange: #f97316;
-            --primary-orange-hover: #ea580c;
-            --primary-orange-light: #fed7aa;
-            --secondary: #6b7280;
-            --dark: #111827;
-            --light: #f9fafb;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-300: #d1d5db;
-            --gray-400: #9ca3af;
-            --gray-500: #6b7280;
-            --gray-600: #4b5563;
-            --gray-700: #374151;
-            --gray-800: #1f2937;
-            --gray-900: #111827;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--gray-800);
-            background-color: var(--light);
-            transition: all 0.3s ease;
-            overflow-x: hidden;
-        }
-
-        .dark-mode {
-            background-color: var(--dark);
-            color: var(--gray-100);
-        }
-
-        .dark-mode .bg-light {
-            background-color: var(--gray-900) !important;
-        }
-
-        .dark-mode .bg-white {
-            background-color: var(--gray-800) !important;
-        }
-
-        .dark-mode .card {
-            background-color: var(--gray-800);
-            border-color: var(--gray-700);
-            color: var(--gray-100);
-        }
-
-        .dark-mode .text-dark {
-            color: var(--gray-100) !important;
-        }
-
-        .dark-mode .text-muted {
-            color: var(--gray-400) !important;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            line-height: 1.2;
-        }
-
-        /* Loading Screen */
-        #loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-orange), #fb923c);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-
-        .loading-text {
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 500;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        /* Particles Background */
-        #particles-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.6;
-        }
-
-        /* Enhanced Navbar */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .dark-mode .navbar {
-            background: rgba(17, 24, 39, 0.95) !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .navbar-scrolled {
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-brand {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            background: linear-gradient(135deg, var(--primary-orange), #fb923c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover {
-            color: var(--primary-orange) !important;
-            transform: translateY(-2px);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background: var(--primary-orange);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        #hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(251, 146, 60, 0.1));
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--primary-orange);
-            box-shadow: 0 20px 40px rgba(249, 115, 22, 0.3);
-            transition: all 0.3s ease;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .profile-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 25px 50px rgba(249, 115, 22, 0.4);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--gray-900), var(--gray-700));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-        }
-
-        .dark-mode .hero-title {
-            background: linear-gradient(135deg, white, var(--gray-300));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .typed-text {
-            font-size: 2rem;
-            color: var(--primary-orange);
-            font-weight: 600;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-description {
-            font-size: 1.25rem;
-            color: var(--gray-600);
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-
-        .dark-mode .hero-description {
-            color: var(--gray-300);
-        }
-
-        .btn-primary-custom {
-            background: linear-gradient(135deg, var(--primary-orange), #fb923c);
-            border: none;
-            padding: 12px 30px;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
-        }
-
-        .btn-primary-custom:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
-        }
-
-        .btn-outline-custom {
-            border: 2px solid var(--primary-orange);
-            color: var(--primary-orange);
-            padding: 12px 30px;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            background: transparent;
-        }
-
-        .btn-outline-custom:hover {
-            background: var(--primary-orange);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: var(--gray-100);
-            color: var(--gray-600);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            margin: 0 10px;
-        }
-
-        .dark-mode .social-links a {
-            background: var(--gray-800);
-            color: var(--gray-400);
-        }
-
-        .social-links a:hover {
-            background: var(--primary-orange);
-            color: white;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
-        }
-
-        /* Floating Elements */
-        .floating-element {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: var(--primary-orange);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: floatRandom 15s infinite linear;
-        }
-
-        @keyframes floatRandom {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-100px) rotate(90deg); }
-            50% { transform: translateY(-50px) rotate(180deg); }
-            75% { transform: translateY(-150px) rotate(270deg); }
-        }
-
-        /* Section Styling */
-        .section-title {
-            font-size: 3rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(135deg, var(--primary-orange), #fb923c);
-            border-radius: 2px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--gray-600);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 3rem;
-        }
-
-        .dark-mode .section-subtitle {
-            color: var(--gray-400);
-        }
-
-        /* Enhanced Cards */
-        .card-enhanced {
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            overflow: hidden;
-            height: 100%;
-        }
-
-        .card-enhanced:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .dark-mode .card-enhanced {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .dark-mode .card-enhanced:hover {
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Stats Cards */
-        .stat-card {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .dark-mode .stat-card {
-            background: var(--gray-800);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary-orange);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--gray-600);
-            font-weight: 500;
-        }
-
-        .dark-mode .stat-label {
-            color: var(--gray-400);
-        }
-
-        /* Skills Progress Bars */
-        .skill-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .progress-custom {
-            height: 8px;
-            border-radius: 10px;
-            background: var(--gray-200);
-            overflow: hidden;
-        }
-
-        .dark-mode .progress-custom {
-            background: var(--gray-700);
-        }
-
-        .progress-bar-custom {
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-orange), #fb923c);
-            border-radius: 10px;
-            transition: width 2s ease;
-            position: relative;
-        }
-
-        .progress-bar-custom::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        /* Project Cards */
-        .project-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .project-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover .project-image {
-            transform: scale(1.1);
-        }
-
-        .badge-custom {
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.8rem;
-        }
-
-        .badge-web {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
-        }
-
-        .badge-mobile {
-            background: linear-gradient(135deg, #10b981, #047857);
-            color: white;
-        }
-
-        .badge-ai {
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-            color: white;
-        }
-
-        .badge-iot {
-            background: linear-gradient(135deg, var(--primary-orange), #ea580c);
-            color: white;
-        }
-
-        /* Contact Form */
-        .form-control-custom {
-            border: 2px solid var(--gray-200);
-            border-radius: 10px;
-            padding: 12px 15px;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        .dark-mode .form-control-custom {
-            background: var(--gray-800);
-            border-color: var(--gray-700);
-            color: var(--gray-100);
-        }
-
-        .form-control-custom:focus {
-            border-color: var(--primary-orange);
-            box-shadow: 0 0 0 0.2rem rgba(249, 115, 22, 0.25);
-            outline: none;
-        }
-
-        /* Footer */
-        .footer {
-            background: linear-gradient(135deg, var(--gray-900), var(--gray-800));
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-
-        /* Back to Top Button */
-        #backToTop {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-orange), #fb923c);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
-        }
-
-        #backToTop:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .typed-text {
-                font-size: 1.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .profile-image {
-                width: 150px;
-                height: 150px;
-            }
-        }
-
-        /* Custom Animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Certification Cards */
-        .cert-card {
-            border-left: 4px solid var(--primary-orange);
-            transition: all 0.3s ease;
-        }
-
-        .cert-card:hover {
-            border-left-width: 8px;
-            transform: translateX(5px);
-        }
-
-        /* Technology Tags */
-        .tech-tag {
-            display: inline-block;
-            background: var(--gray-100);
-            color: var(--gray-700);
-            padding: 0.25rem 0.75rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            margin: 0.25rem;
-            transition: all 0.3s ease;
-        }
-
-        .dark-mode .tech-tag {
-            background: var(--gray-700);
-            color: var(--gray-300);
-        }
-
-        .tech-tag:hover {
-            background: var(--primary-orange);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Loading animations for skills */
-        .skill-loading {
-            width: 0;
-            animation: loadSkill 2s ease-out forwards;
-        }
-
-        @keyframes loadSkill {
-            to {
-                width: var(--skill-width);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -711,11 +57,11 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#hero">Hamza Radaideh</a>
-            
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
@@ -740,30 +86,30 @@
             <div class="row justify-content-center text-center hero-content">
                 <div class="col-lg-10">
                     <div class="mb-4" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="pfp.png" alt="Hamza Radaideh" class="profile-image">
+                        <img src="images/pfp.png" alt="Hamza Radaideh" class="profile-image">
                     </div>
-                    
+
                     <h1 class="hero-title" data-aos="fade-up" data-aos-delay="400">
                         Hamza Radaideh
                     </h1>
-                    
+
                     <div class="typed-text mb-4" data-aos="fade-up" data-aos-delay="600">
                         <span id="typed-output"></span>
                     </div>
-                    
+
                     <p class="hero-description" data-aos="fade-up" data-aos-delay="800">
                         Building intuitive web experiences, robust mobile apps, and intelligent AI solutions that make a difference in the digital world.
                     </p>
-                    
+
                     <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mb-5" data-aos="fade-up" data-aos-delay="1000">
-                        <a href="Hamza-CV.pdf" class="btn btn-primary-custom" download>
+                        <a href="CV/CV.pdf" class="btn btn-primary-custom" download>
                             <i class="fas fa-download me-2"></i>Download CV
                         </a>
                         <a href="#contact" class="btn btn-outline-custom">
                             <i class="fas fa-envelope me-2"></i>Contact Me
                         </a>
                     </div>
-                    
+
                     <div class="social-links" data-aos="fade-up" data-aos-delay="1200">
                         <a href="https://github.com/HamzaRadaideh" target="_blank" aria-label="GitHub">
                             <i class="fab fa-github"></i>
@@ -778,7 +124,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Floating Elements -->
         <div class="floating-element" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
         <div class="floating-element" style="top: 60%; left: 85%; animation-delay: 2s;"></div>
@@ -798,22 +144,24 @@
                     </p>
                 </div>
             </div>
-            
+
             <div class="row align-items-center">
                 <div class="col-lg-8" data-aos="fade-right">
                     <div class="pe-lg-4">
                         <p class="lead mb-4">
-                            Hello! I'm <strong class="text-primary">Hamza Radaideh</strong>, a passionate Software Developer specializing in full-stack development with expertise in ASP.NET Core and Angular. I hold a Bachelor's degree in Computer Science from Jordan University of Science and Technology (JUST).
+                            Hello! I'm <strong class="text-primary">Hamza Radaideh</strong>, a passionate Software Developer specializing in full-stack development with expertise in ASP.NET Core and Angular. I hold a Bachelor's degree in Computer Science
+                            from Jordan University of Science and Technology (JUST).
                         </p>
-                        
+
                         <p class="mb-4">
-                            My experience spans backend, frontend, and mobile technologies, combined with a deep understanding of AI and machine learning concepts. I love building scalable, user-centric solutions that leverage modern frameworks like Angular, ASP.NET Core, Flutter, and React.
+                            My experience spans backend, frontend, and mobile technologies, combined with a deep understanding of AI and machine learning concepts. I love building scalable, user-centric solutions that leverage modern frameworks like Angular, ASP.NET Core, Flutter,
+                            and React.
                         </p>
-                        
+
                         <p class="mb-4">
                             Currently, I'm working as a Full Stack Developer at Arizona Intelligent Solution, where I develop robust solutions using ASP.NET Core and Angular. I'm eager to contribute to impactful tech projects with a strong emphasis on quality and performance.
                         </p>
-                        
+
                         <div class="row mt-4">
                             <div class="col-md-6">
                                 <ul class="list-unstyled">
@@ -832,7 +180,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4" data-aos="fade-left" data-aos-delay="200">
                     <div class="row g-3">
                         <div class="col-6">
@@ -876,7 +224,7 @@
                     </p>
                 </div>
             </div>
-            
+
             <!-- Work Experience -->
             <div class="row mb-5">
                 <div class="col-12">
@@ -884,7 +232,7 @@
                         <i class="fas fa-briefcase text-primary me-2"></i>Work Experience
                     </h3>
                 </div>
-                
+
                 <div class="col-lg-6 mb-4" data-aos="fade-up">
                     <div class="card card-enhanced h-100">
                         <div class="card-body">
@@ -907,7 +255,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="card card-enhanced h-100">
                         <div class="card-body">
@@ -931,7 +279,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Education -->
             <div class="row">
                 <div class="col-12">
@@ -939,7 +287,7 @@
                         <i class="fas fa-graduation-cap text-primary me-2"></i>Education
                     </h3>
                 </div>
-                
+
                 <div class="col-12" data-aos="fade-up">
                     <div class="card card-enhanced">
                         <div class="card-body">
@@ -975,7 +323,7 @@
                     </p>
                 </div>
             </div>
-            
+
             <!-- Programming Languages & Frameworks -->
             <div class="row mb-5">
                 <div class="col-lg-6 mb-4" data-aos="fade-right">
@@ -984,7 +332,7 @@
                             <h5 class="card-title mb-4">
                                 <i class="fas fa-code text-primary me-2"></i>Programming Languages
                             </h5>
-                            
+
                             <div class="skill-item">
                                 <div class="skill-name">
                                     <span>Python</span>
@@ -994,7 +342,7 @@
                                     <div class="progress-bar-custom skill-loading" style="--skill-width: 90%"></div>
                                 </div>
                             </div>
-                            
+
                             <div class="skill-item">
                                 <div class="skill-name">
                                     <span>C#</span>
@@ -1004,7 +352,7 @@
                                     <div class="progress-bar-custom skill-loading" style="--skill-width: 85%"></div>
                                 </div>
                             </div>
-                            
+
                             <div class="skill-item">
                                 <div class="skill-name">
                                     <span>JavaScript</span>
@@ -1014,7 +362,7 @@
                                     <div class="progress-bar-custom skill-loading" style="--skill-width: 80%"></div>
                                 </div>
                             </div>
-                            
+
                             <div class="skill-item">
                                 <div class="skill-name">
                                     <span>TypeScript</span>
@@ -1024,7 +372,7 @@
                                     <div class="progress-bar-custom skill-loading" style="--skill-width: 80%"></div>
                                 </div>
                             </div>
-                            
+
                             <div class="skill-item">
                                 <div class="skill-name">
                                     <span>Java</span>
@@ -1037,14 +385,14 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-6 mb-4" data-aos="fade-left" data-aos-delay="200">
                     <div class="card card-enhanced h-100">
                         <div class="card-body">
                             <h5 class="card-title mb-4">
                                 <i class="fas fa-cogs text-primary me-2"></i>Frameworks & Technologies
                             </h5>
-                            
+
                             <div class="skill-item">
                                 <div class="skill-name">
                                     <span>ASP.NET Core</span>
@@ -1054,7 +402,7 @@
                                     <div class="progress-bar-custom skill-loading" style="--skill-width: 90%"></div>
                                 </div>
                             </div>
-                            
+
                             <div class="skill-item">
                                 <div class="skill-name">
                                     <span>Angular</span>
@@ -1064,7 +412,7 @@
                                     <div class="progress-bar-custom skill-loading" style="--skill-width: 85%"></div>
                                 </div>
                             </div>
-                            
+
                             <div class="skill-item">
                                 <div class="skill-name">
                                     <span>Flutter</span>
@@ -1074,7 +422,7 @@
                                     <div class="progress-bar-custom skill-loading" style="--skill-width: 80%"></div>
                                 </div>
                             </div>
-                            
+
                             <div class="skill-item">
                                 <div class="skill-name">
                                     <span>React</span>
@@ -1084,7 +432,7 @@
                                     <div class="progress-bar-custom skill-loading" style="--skill-width: 75%"></div>
                                 </div>
                             </div>
-                            
+
                             <div class="skill-item">
                                 <div class="skill-name">
                                     <span>Node.js</span>
@@ -1098,7 +446,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Additional Skills -->
             <div class="row">
                 <div class="col-lg-4 mb-4" data-aos="fade-up">
@@ -1117,7 +465,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="card card-enhanced h-100">
                         <div class="card-body">
@@ -1137,7 +485,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
                     <div class="card card-enhanced h-100">
                         <div class="card-body">
@@ -1170,7 +518,7 @@
                     </p>
                 </div>
             </div>
-            
+
             <div class="row">
                 <!-- Project 1 -->
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
@@ -1195,7 +543,7 @@
                             </div>
                             <h5 class="card-title">Personal Finance Manager</h5>
                             <p class="card-text">A comprehensive web application to manage accounts, transactions, and budgets using ASP.NET Core MVC with advanced reporting features.</p>
-                            
+
                             <div class="mb-3">
                                 <h6 class="small fw-bold">Key Features:</h6>
                                 <ul class="small mb-0">
@@ -1204,7 +552,7 @@
                                     <li>Budget Planning</li>
                                 </ul>
                             </div>
-                            
+
                             <div class="mb-3">
                                 <h6 class="small fw-bold">Technologies:</h6>
                                 <div class="d-flex flex-wrap gap-1">
@@ -1216,7 +564,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Project 2 -->
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="card card-enhanced project-card">
@@ -1240,7 +588,7 @@
                             </div>
                             <h5 class="card-title">E-Learning Platform</h5>
                             <p class="card-text">A comprehensive platform for instructors to create courses and quizzes, and for students to enroll, learn, and track progress.</p>
-                            
+
                             <div class="mb-3">
                                 <h6 class="small fw-bold">Key Features:</h6>
                                 <ul class="small mb-0">
@@ -1249,7 +597,7 @@
                                     <li>Progress Tracking</li>
                                 </ul>
                             </div>
-                            
+
                             <div class="mb-3">
                                 <h6 class="small fw-bold">Technologies:</h6>
                                 <div class="d-flex flex-wrap gap-1">
@@ -1261,7 +609,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Project 3 -->
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
                     <div class="card card-enhanced project-card">
@@ -1285,7 +633,7 @@
                             </div>
                             <h5 class="card-title">AI Chatbot Assistant</h5>
                             <p class="card-text">An intelligent chatbot built with Python and TensorFlow, providing personalized assistance with natural language processing.</p>
-                            
+
                             <div class="mb-3">
                                 <h6 class="small fw-bold">Key Features:</h6>
                                 <ul class="small mb-0">
@@ -1294,7 +642,7 @@
                                     <li>Multi-language Support</li>
                                 </ul>
                             </div>
-                            
+
                             <div class="mb-3">
                                 <h6 class="small fw-bold">Technologies:</h6>
                                 <div class="d-flex flex-wrap gap-1">
@@ -1306,7 +654,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Project 4 -->
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
                     <div class="card card-enhanced project-card">
@@ -1330,7 +678,7 @@
                             </div>
                             <h5 class="card-title">Mobile Fitness Tracker</h5>
                             <p class="card-text">A comprehensive mobile app for tracking fitness goals, workouts, and progress with social features and AI recommendations.</p>
-                            
+
                             <div class="mb-3">
                                 <h6 class="small fw-bold">Key Features:</h6>
                                 <ul class="small mb-0">
@@ -1339,7 +687,7 @@
                                     <li>Social Features</li>
                                 </ul>
                             </div>
-                            
+
                             <div class="mb-3">
                                 <h6 class="small fw-bold">Technologies:</h6>
                                 <div class="d-flex flex-wrap gap-1">
@@ -1351,7 +699,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Project 5 -->
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="800">
                     <div class="card card-enhanced project-card">
@@ -1375,7 +723,7 @@
                             </div>
                             <h5 class="card-title">Blog Management System</h5>
                             <p class="card-text">A modern blogging platform with user roles, real-time chat, notifications, and advanced content management features.</p>
-                            
+
                             <div class="mb-3">
                                 <h6 class="small fw-bold">Key Features:</h6>
                                 <ul class="small mb-0">
@@ -1384,7 +732,7 @@
                                     <li>Real-time Chat</li>
                                 </ul>
                             </div>
-                            
+
                             <div class="mb-3">
                                 <h6 class="small fw-bold">Technologies:</h6>
                                 <div class="d-flex flex-wrap gap-1">
@@ -1396,7 +744,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Project 6 -->
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="1000">
                     <div class="card card-enhanced project-card">
@@ -1420,7 +768,7 @@
                             </div>
                             <h5 class="card-title">Smart Home IoT Dashboard</h5>
                             <p class="card-text">An IoT dashboard for monitoring and controlling smart home devices with real-time data visualization and automation.</p>
-                            
+
                             <div class="mb-3">
                                 <h6 class="small fw-bold">Key Features:</h6>
                                 <ul class="small mb-0">
@@ -1429,7 +777,7 @@
                                     <li>Automation Rules</li>
                                 </ul>
                             </div>
-                            
+
                             <div class="mb-3">
                                 <h6 class="small fw-bold">Technologies:</h6>
                                 <div class="d-flex flex-wrap gap-1">
@@ -1456,7 +804,7 @@
                     </p>
                 </div>
             </div>
-            
+
             <div class="row">
                 <!-- Certification 1 -->
                 <div class="col-lg-6 mb-4" data-aos="fade-up">
@@ -1469,16 +817,16 @@
                                 </div>
                                 <i class="fas fa-award text-warning fs-4"></i>
                             </div>
-                            
+
                             <div class="d-flex flex-wrap gap-3 mb-3 text-muted small">
                                 <span><i class="fas fa-calendar me-1"></i>Apr 2024 - Jul 2024</span>
                                 <span><i class="fas fa-clock me-1"></i>120 hours</span>
                             </div>
-                            
+
                             <p class="card-text mb-3">
                                 Comprehensive training in Python, machine learning, deep learning, and data analysis with hands-on projects and real-world applications.
                             </p>
-                            
+
                             <div class="mb-3">
                                 <h6 class="small fw-bold mb-2">Skills Acquired:</h6>
                                 <div class="d-flex flex-wrap gap-1">
@@ -1490,14 +838,14 @@
                                     <span class="tech-tag">NumPy</span>
                                 </div>
                             </div>
-                            
+
                             <a href="#" class="text-primary text-decoration-none">
                                 <i class="fas fa-external-link-alt me-1"></i>View Certificate
                             </a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Certification 2 -->
                 <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="card card-enhanced cert-card h-100">
@@ -1509,16 +857,16 @@
                                 </div>
                                 <i class="fas fa-award text-warning fs-4"></i>
                             </div>
-                            
+
                             <div class="d-flex flex-wrap gap-3 mb-3 text-muted small">
                                 <span><i class="fas fa-calendar me-1"></i>Jan 2024 - Apr 2024</span>
                                 <span><i class="fas fa-clock me-1"></i>80 hours</span>
                             </div>
-                            
+
                             <p class="card-text mb-3">
                                 Professional mobile app development training focusing on modern UI/UX concepts and Flutter framework with practical projects.
                             </p>
-                            
+
                             <div class="mb-3">
                                 <h6 class="small fw-bold mb-2">Skills Acquired:</h6>
                                 <div class="d-flex flex-wrap gap-1">
@@ -1529,14 +877,14 @@
                                     <span class="tech-tag">Firebase</span>
                                 </div>
                             </div>
-                            
+
                             <a href="#" class="text-primary text-decoration-none">
                                 <i class="fas fa-external-link-alt me-1"></i>View Certificate
                             </a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Certification 3 -->
                 <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="400">
                     <div class="card card-enhanced cert-card h-100">
@@ -1548,16 +896,16 @@
                                 </div>
                                 <i class="fas fa-award text-warning fs-4"></i>
                             </div>
-                            
+
                             <div class="d-flex flex-wrap gap-3 mb-3 text-muted small">
                                 <span><i class="fas fa-calendar me-1"></i>Jan 2024</span>
                                 <span><i class="fas fa-clock me-1"></i>20 hours</span>
                             </div>
-                            
+
                             <p class="card-text mb-3">
                                 Intensive hands-on Java programming course covering core concepts, object-oriented programming, and best practices.
                             </p>
-                            
+
                             <div class="mb-3">
                                 <h6 class="small fw-bold mb-2">Skills Acquired:</h6>
                                 <div class="d-flex flex-wrap gap-1">
@@ -1567,14 +915,14 @@
                                     <span class="tech-tag">Algorithms</span>
                                 </div>
                             </div>
-                            
+
                             <a href="#" class="text-primary text-decoration-none">
                                 <i class="fas fa-external-link-alt me-1"></i>View Certificate
                             </a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Certification 4 -->
                 <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="600">
                     <div class="card card-enhanced cert-card h-100">
@@ -1586,16 +934,16 @@
                                 </div>
                                 <i class="fas fa-award text-warning fs-4"></i>
                             </div>
-                            
+
                             <div class="d-flex flex-wrap gap-3 mb-3 text-muted small">
                                 <span><i class="fas fa-calendar me-1"></i>2023</span>
                                 <span><i class="fas fa-clock me-1"></i>16 hours</span>
                             </div>
-                            
+
                             <p class="card-text mb-3">
                                 Comprehensive workshop on React.js fundamentals, hooks, state management, and modern development best practices.
                             </p>
-                            
+
                             <div class="mb-3">
                                 <h6 class="small fw-bold mb-2">Skills Acquired:</h6>
                                 <div class="d-flex flex-wrap gap-1">
@@ -1606,7 +954,7 @@
                                     <span class="tech-tag">Component Design</span>
                                 </div>
                             </div>
-                            
+
                             <a href="#" class="text-primary text-decoration-none">
                                 <i class="fas fa-external-link-alt me-1"></i>View Certificate
                             </a>
@@ -1614,7 +962,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Achievement Stats -->
             <div class="row mt-5" data-aos="fade-up">
                 <div class="col-12">
@@ -1660,7 +1008,7 @@
                     </p>
                 </div>
             </div>
-            
+
             <div class="row">
                 <!-- Contact Information -->
                 <div class="col-lg-6 mb-5" data-aos="fade-right">
@@ -1669,7 +1017,7 @@
                             <h5 class="card-title mb-4">
                                 <i class="fas fa-address-card text-primary me-2"></i>Contact Information
                             </h5>
-                            
+
                             <div class="contact-info">
                                 <div class="contact-item mb-4">
                                     <div class="d-flex align-items-center">
@@ -1682,7 +1030,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="contact-item mb-4">
                                     <div class="d-flex align-items-center">
                                         <div class="contact-icon">
@@ -1694,7 +1042,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="contact-item mb-4">
                                     <div class="d-flex align-items-center">
                                         <div class="contact-icon">
@@ -1706,7 +1054,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="contact-item mb-4">
                                     <div class="d-flex align-items-center">
                                         <div class="contact-icon">
@@ -1719,7 +1067,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="mt-4">
                                 <h6 class="mb-3">Follow Me</h6>
                                 <div class="social-links">
@@ -1737,7 +1085,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Contact Form -->
                 <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
                     <div class="card card-enhanced">
@@ -1745,7 +1093,7 @@
                             <h5 class="card-title mb-4">
                                 <i class="fas fa-paper-plane text-primary me-2"></i>Send me a message
                             </h5>
-                            
+
                             <form id="contactForm" class="contact-form">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
@@ -1757,17 +1105,17 @@
                                         <input type="email" class="form-control form-control-custom" id="email" name="email" required>
                                     </div>
                                 </div>
-                                
+
                                 <div class="mb-3">
                                     <label for="subject" class="form-label">Subject *</label>
                                     <input type="text" class="form-control form-control-custom" id="subject" name="subject" required>
                                 </div>
-                                
+
                                 <div class="mb-4">
                                     <label for="message" class="form-label">Message *</label>
                                     <textarea class="form-control form-control-custom" id="message" name="message" rows="5" required></textarea>
                                 </div>
-                                
+
                                 <button type="submit" class="btn btn-primary-custom w-100" id="submitBtn">
                                     <i class="fas fa-paper-plane me-2"></i>Send Message
                                 </button>
@@ -1789,7 +1137,7 @@
                         <p class="text-light mb-4">
                             Full Stack Developer passionate about creating innovative solutions and building the future of technology.
                         </p>
-                        
+
                         <div class="social-links">
                             <a href="https://github.com/HamzaRadaideh" target="_blank" aria-label="GitHub">
                                 <i class="fab fa-github"></i>
@@ -1802,7 +1150,7 @@
                             </a>
                         </div>
                     </div>
-                    
+
                     <div class="border-top border-secondary pt-4" data-aos="fade-up" data-aos-delay="200">
                         <p class="mb-0 text-light">
                             © 2025 Hamza Radaideh. Made with <i class="fas fa-heart text-danger"></i> and lots of coffee.
@@ -1821,370 +1169,14 @@
     <!-- Scripts -->
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Typed.js -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    
+
     <!-- AOS Animation -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        // Loading Screen
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.getElementById('loading-screen').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('loading-screen').style.display = 'none';
-                }, 500);
-            }, 2000);
-        });
-
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            offset: 100
-        });
-
-        // Particles Background
-        function initParticles() {
-            const canvas = document.getElementById('particles-canvas');
-            const ctx = canvas.getContext('2d');
-            
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            
-            const particles = [];
-            const particleCount = 100;
-            
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.5,
-                    vy: (Math.random() - 0.5) * 0.5,
-                    size: Math.random() * 3 + 1,
-                    opacity: Math.random() * 0.5 + 0.2
-                });
-            }
-            
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                particles.forEach((particle, index) => {
-                    particle.x += particle.vx;
-                    particle.y += particle.vy;
-                    
-                    if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-                    if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
-                    
-                    ctx.beginPath();
-                    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(249, 115, 22, ${particle.opacity})`;
-                    ctx.fill();
-                    
-                    // Draw connections
-                    particles.slice(index + 1).forEach(otherParticle => {
-                        const dx = particle.x - otherParticle.x;
-                        const dy = particle.y - otherParticle.y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-                        
-                        if (distance < 100) {
-                            ctx.beginPath();
-                            ctx.moveTo(particle.x, particle.y);
-                            ctx.lineTo(otherParticle.x, otherParticle.y);
-                            ctx.strokeStyle = `rgba(249, 115, 22, ${0.1 * (1 - distance / 100)})`;
-                            ctx.lineWidth = 1;
-                            ctx.stroke();
-                        }
-                    });
-                });
-                
-                requestAnimationFrame(animate);
-            }
-            
-            animate();
-            
-            window.addEventListener('resize', () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            });
-        }
-
-        // Initialize particles when page loads
-        initParticles();
-
-        // Typed.js Animation
-        const typed = new Typed('#typed-output', {
-            strings: [
-                'Full Stack Developer',
-                'AI Engineer', 
-                'Mobile App Developer',
-                'Problem Solver',
-                'Tech Enthusiast'
-            ],
-            typeSpeed: 80,
-            backSpeed: 60,
-            backDelay: 2000,
-            startDelay: 1000,
-            loop: true,
-            showCursor: true,
-            cursorChar: '|'
-        });
-
-        // Enhanced Navbar
-        const navbar = document.querySelector('.navbar');
-        let lastScrollTop = 0;
-
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > 50) {
-                navbar.classList.add('navbar-scrolled');
-            } else {
-                navbar.classList.remove('navbar-scrolled');
-            }
-            
-            lastScrollTop = scrollTop;
-        });
-
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        const icon = themeToggle.querySelector('i');
-
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            body.classList.toggle('dark-mode', savedTheme === 'dark');
-            updateThemeIcon();
-        }
-
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const isDark = body.classList.contains('dark-mode');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            updateThemeIcon();
-        });
-
-        function updateThemeIcon() {
-            const isDark = body.classList.contains('dark-mode');
-            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-        }
-
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offsetTop = target.offsetTop - 80;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Back to Top Button
-        const backToTop = document.getElementById('backToTop');
-
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.style.display = 'flex';
-            } else {
-                backToTop.style.display = 'none';
-            }
-        });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Animated Counters
-        function animateCounters() {
-            const counters = document.querySelectorAll('[data-count]');
-            
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-count'));
-                const duration = 2000;
-                const increment = target / (duration / 16);
-                let current = 0;
-                
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        current = target;
-                        clearInterval(timer);
-                    }
-                    counter.textContent = Math.floor(current) + (target === 100 ? '%' : '+');
-                }, 16);
-            });
-        }
-
-        // Trigger counter animation when about section is visible
-        const aboutSection = document.getElementById('about');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    observer.unobserve(entry.target);
-                }
-            });
-        });
-
-        observer.observe(aboutSection);
-
-        // Skills Animation
-        function animateSkills() {
-            const skillBars = document.querySelectorAll('.skill-loading');
-            skillBars.forEach((bar, index) => {
-                setTimeout(() => {
-                    bar.style.animationDelay = `${index * 0.2}s`;
-                    bar.classList.add('animate');
-                }, 100);
-            });
-        }
-
-        // Trigger skills animation when skills section is visible
-        const skillsSection = document.getElementById('skills');
-        const skillsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateSkills();
-                    skillsObserver.unobserve(entry.target);
-                }
-            });
-        });
-
-        skillsObserver.observe(skillsSection);
-
-        // Contact Form
-        const contactForm = document.getElementById('contactForm');
-        const submitBtn = document.getElementById('submitBtn');
-
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            // Change button state
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
-            submitBtn.disabled = true;
-            
-            // Simulate form submission
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            
-            // Reset form
-            contactForm.reset();
-            
-            // Reset button
-            submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send Message';
-            submitBtn.disabled = false;
-            
-            // Show success message
-            alert('Message sent successfully! I\'ll get back to you soon.');
-        });
-
-        // Add hover effects to cards
-        document.querySelectorAll('.card-enhanced').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-5px)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-
-        // Add click effects to buttons
-        document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                ripple.classList.add('ripple');
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            });
-        });
-
-        // Add CSS for ripple effect
-        const style = document.createElement('style');
-        style.textContent = `
-            .btn {
-                position: relative;
-                overflow: hidden;
-            }
-            
-            .ripple {
-                position: absolute;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.3);
-                transform: scale(0);
-                animation: ripple-animation 0.6s linear;
-                pointer-events: none;
-            }
-            
-            @keyframes ripple-animation {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Preload images
-        const imageUrls = [
-            'https://via.placeholder.com/400x250/f97316/ffffff?text=Finance+Manager',
-            'https://via.placeholder.com/400x250/10b981/ffffff?text=E-Learning+Platform',
-            'https://via.placeholder.com/400x250/8b5cf6/ffffff?text=AI+Chatbot',
-            'https://via.placeholder.com/400x250/10b981/ffffff?text=Fitness+Tracker',
-            'https://via.placeholder.com/400x250/3b82f6/ffffff?text=Blog+System',
-            'https://via.placeholder.com/400x250/f97316/ffffff?text=IoT+Dashboard'
-        ];
-
-        imageUrls.forEach(url => {
-            const img = new Image();
-            img.src = url;
-        });
-
-        // Add scroll progress indicator
-        const progressBar = document.createElement('div');
-        progressBar.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: linear-gradient(135deg, #f97316, #fb923c);
-            z-index: 9999;
-            transition: width 0.1s ease;
-        `;
-        document.body.appendChild(progressBar);
-
-        window.addEventListener('scroll', () => {
-            const scrolled = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            progressBar.style.width = scrolled + '%';
-        });
-
-        console.log('🚀 Portfolio loaded successfully!');
-        console.log('💼 Hamza Radaideh - Full Stack Developer');
-        console.log('📧 Contact: hjradaideh10@gmail.com');
     </script>
 </body>
 
