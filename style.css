@@ -2280,7 +2280,8 @@ a:focus,
    CUSTOM SCROLLBAR
    =================================== */
 
-::-webkit-scrollbar {
+
+/* ::-webkit-scrollbar {
     width: 8px;
 }
 
@@ -2295,7 +2296,7 @@ a:focus,
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-orange-hover);
-}
+} */
 
 
 /* ===================================
@@ -2465,4 +2466,12 @@ a:focus,
 .theme-transitioning *:after {
     transition: all var(--transition-fast) !important;
     transition-delay: 0 !important;
+}
+
+
+/* Improved focus styles */
+
+ :focus {
+    outline: 2px solid #f97316;
+    outline-offset: 2px;
 }
