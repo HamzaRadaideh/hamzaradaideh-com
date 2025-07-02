@@ -17,46 +17,39 @@ function initLoadingScreen() {
 // Animations
 // ==============================
 function initAnimations() {
-    // Initialize AOS
-    AOS.init({
-        duration: 800,
-        easing: "ease-in-out",
-        once: true,
-        offset: 100,
-    });
+  // Typed.js Animation
+  const typed = new Typed("#typed-output", {
+    strings: [
+      "Full Stack Developer",
+      "AI Engineer",
+      "Mobile App Developer",
+      "Problem Solver",
+      "Tech Enthusiast",
+    ],
+    typeSpeed: 80,
+    backSpeed: 60,
+    backDelay: 2000,
+    startDelay: 1000,
+    loop: true,
+    showCursor: true,
+    cursorChar: "|",
+  });
 
-    // Typed.js Animation
-    const typed = new Typed("#typed-output", {
-        strings: [
-            "Full Stack Developer",
-            "AI Engineer",
-            "Mobile App Developer",
-            "Problem Solver",
-            "Tech Enthusiast",
-        ],
-        typeSpeed: 80,
-        backSpeed: 60,
-        backDelay: 2000,
-        startDelay: 1000,
-        loop: true,
-        showCursor: true,
-        cursorChar: "|",
-    });
+  // Initialize counters when section is visible
+  const aboutSection = document.getElementById("about");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
 
-    // Initialize counters when section is visible
-    const aboutSection = document.getElementById("about");
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 }
-    );
-
-    observer.observe(aboutSection);
+  observer.observe(aboutSection);
 }
 
 // ==============================
