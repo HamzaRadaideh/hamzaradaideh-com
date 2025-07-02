@@ -8,6 +8,63 @@ window.addEventListener("load", function() {
     }, 2000);
 });
 
+// Skills Radar Chart
+const ctx = document.getElementById('skillsChart').getContext('2d');
+new Chart(ctx, {
+    type: 'radar',
+    data: {
+        labels: ['Full Stack Dev', 'Mobile Dev', 'AI/ML', 'Data Analysis', 'Problem Solving'],
+        datasets: [{
+            label: 'Skill Proficiency',
+            data: [90, 85, 75, 80, 95],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            r: {
+                ticks: {
+                    display: false
+                }
+            }
+        }
+    }
+});
+
+// Donut Chart for technology breakdown
+const techCtx = document.getElementById('techChart').getContext('2d');
+new Chart(techCtx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Web Dev', 'Mobile Dev', 'AI/ML'],
+        datasets: [{
+            label: 'Technology Breakdown',
+            data: [60, 25, 15],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(75, 192, 192, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(75, 192, 192, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }
+});
+
 // Initialize AOS
 AOS.init({
     duration: 800,
