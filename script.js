@@ -72,7 +72,7 @@ function initCharts() {
                     ],
                     datasets: [{
                         label: "Skill Proficiency",
-                        data: [90, 85, 75, 80, 95],
+                        data: [80, 85, 85, 80, 75],
                         backgroundColor: "rgba(75, 192, 192, 0.2)",
                         borderColor: "rgba(75, 192, 192, 1)",
                         borderWidth: 1,
@@ -99,7 +99,7 @@ function initCharts() {
                     labels: ["Web Dev", "Mobile Dev", "AI/ML"],
                     datasets: [{
                         label: "Technology Breakdown",
-                        data: [60, 25, 15],
+                        data: [40, 25, 35],
                         backgroundColor: [
                             "rgba(255, 99, 132, 0.2)",
                             "rgba(54, 162, 235, 0.2)",
